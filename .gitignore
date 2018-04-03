@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+models/index.js
+config/config.json
+

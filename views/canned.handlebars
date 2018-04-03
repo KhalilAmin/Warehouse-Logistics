@@ -1,0 +1,16 @@
+<h1>Report!</h1>
+<div id=playSpace class="clearfix">  
+    <div id=rowSpace>
+        {{#each rows}}
+            <div class="tablePanel">{{this.id}}. {{this.burger_name}}</div> 
+        {{/each}}
+    </div>
+</div>
+<div id=inputSpace>
+    <form role="form" id="querydata">
+        <div class="form-group" >
+            <input type="text" class="form-control" id="queryInput">
+        </div>
+        <button id="addBurger" type="submit">Submit</button>
+    </form>
+</div>
