@@ -1,5 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var Site = sequelize.define("Site", {
+        site_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         site_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -52,17 +58,22 @@ module.exports = function (sequelize, DataTypes) {
         });
 
         Site.associate = function (models) {
-        // We're saying that a User should belong to an Company
-        // A user can't be created without an Company due to the foreign key constraint
+        // We're saying that a site should belong to an Company
+        // A site can't be created without an Company due to the foreign key constraint
         Site.belongsTo(models.Company, {
             foreignKey: {
                 allowNull: false
             }
         });
+        //sites can be related to many warehouses
         Site.hasMany(models.Warehouse, {
+            onDelete: "cascade"
+        });
+        //sites can be related to many users through the UserToSite table
+        Site.hasMany(models.MapUserToSite, {
             onDelete: "cascade"
         });
     };
 
-    return Post;
+    return Site;
 };
