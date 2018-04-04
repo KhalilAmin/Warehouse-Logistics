@@ -1,5 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var Company = sequelize.define("Company", {
+        company_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         Name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -10,15 +16,19 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Company.associate = function (models) {
-        // Associating Author with Posts
-        // When an Author is deleted, also delete any associated Posts
+        // Associating Comapny with Users
         Company.hasMany(models.User, {
             onDelete: "cascade"
         });
+        // Associating Comapny with Sites
         Company.hasMany(models.Site, {
+            onDelete: "cascade"
+        });
+        // Associating Comapny with Products they sell
+        Company.hasMany(models.Product_Info, {
             onDelete: "cascade"
         });
     };
 
-    return Post;
+    return Company;
 };

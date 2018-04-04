@@ -1,6 +1,6 @@
 CREATE DATABASE warehouse_db;
 
-USE warehouse_db;a
+USE warehouse_db;
 
 CREATE TABLE company
 (

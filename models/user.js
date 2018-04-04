@@ -1,5 +1,11 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -16,8 +22,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1],
-      validate:{
-        isEmail:true
+      validate: {
+        isEmail: true
       }
     },
     userName: {
@@ -33,17 +39,19 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  User.associate = function(models) {
+  User.associate = function (models) {
     // We're saying that a User should belong to an Company
     // A user can't be created without an Company due to the foreign key constraint
-    Post.belongsTo(models.Company, {
+    User.belongsTo(models.Company, {
       foreignKey: {
         allowNull: false
       }
     });
+    User.hasMany(models.MapUserToSite, {
+      onDelete: "cascade"
+    });
   };
 
-  return Post;
+  return User;
 };
 
-  
