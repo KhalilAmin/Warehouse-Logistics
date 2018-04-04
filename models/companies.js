@@ -25,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
             onDelete: "cascade"
         });
         // Associating Comapny with Products they sell
-        Company.hasMany(models.Product_Info, {
+        Company.hasMany(models.MaterialGroup, {
             onDelete: "cascade"
         });
     };
