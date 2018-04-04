@@ -1,8 +1,19 @@
 .jumbotron {
   text-align: center;
-
 }
 
 form {
+  margin: auto;
   max-width: 300px;
+}
+
+.footer {
+  background-attachment: scroll;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(124, 45, 45, 0.5);
+  color: lightgray;
+  text-align: center;
 }
