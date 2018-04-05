@@ -1,5 +1,17 @@
-.jumbotron {
+body {
+  background-image: url("../images/2829985075_d262a4181f_o.jpg");
+  background-size: cover;
+}
+
+.container {
+  background-color: rgba(255,255,255,.8);
+  margin-top: 80px;
+  padding-bottom: 10px;
+}
+
+h1 {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 form {
@@ -7,6 +19,18 @@ form {
   max-width: 300px;
 }
 
+.modal-content {
+  background-color: rgba(0,0,0,.8);
+}
+
+/* Modal Font */
+.modal-title {
+  color: white;
+}
+.modal-body label {
+  color: white;
+}
+/* ---------------- */
 .footer {
   background-attachment: scroll;
   position: fixed;
