@@ -21,11 +21,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DATE,
             allowNull: true,
             defaultValue: null
-        },
-        po_qty: {
-            type: DataTypes.MEDIUMINT,
-            allowNull: true,
-            defaultValue: null
         }
     });
     Outbound.associate = function (models) {
