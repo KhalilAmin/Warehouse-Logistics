@@ -64,12 +64,6 @@ require('./authentication/config/passport/passport.js')(passport, models.user);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-<<<<<<< HEAD
-db.sequelize.sync({ force: false }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
-=======
 db.sequelize.sync({force: true}).then(function() {
  
   console.log('Nice! Database looks fine')
@@ -90,5 +84,4 @@ app.listen(PORT, function(err) {
        
   else console.log(err)
 
->>>>>>> e8bffb33d839b24c2e3220430352f5150c73584a
 });
