@@ -54,7 +54,7 @@ var authRoute = require('./routes/auth.js')(app,passport);
 
 //load Passport strategies
  
-require('./authentication/config/passport/passport.js')(passport, models.user);
+require('./authentication/config/passport/passport.js')(passport, db.user);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
