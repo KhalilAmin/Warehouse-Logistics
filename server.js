@@ -38,7 +38,7 @@ app.use(passport.session()); // persistent login sessions
 app.set('views', './views')
 app.engine('hbs', exphbs({
     extname: '.hbs',
-    defaultLayout: "main"
+    defaultLayout: 'main'
 }));
 app.set('view engine', '.hbs');
  
