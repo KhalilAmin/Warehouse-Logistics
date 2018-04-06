@@ -1,35 +1,28 @@
-// *********************************************************************************
-// html-routes.js - this file offers a set of routes for sending users to the various html pages
-// *********************************************************************************
+var db = require("../models");
 
-// Dependencies
-// =============================================================
-var path = require("path");
-
-// Routes
-// =============================================================
 module.exports = function(app) {
+  
+  app.get("/canned", function(req, res) {
 
-  // Each of the below routes just handles the HTML page that the user gets sent to.
+    db.Site.findAll({}).then(function(sites) {
 
-  // index route loads view.html
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+      var hbsObject = {
+        sites: sites
+      };
+
+      res.render("canned", hbsObject);
+    }); 
   });
-
-  // cms route loads cms.html
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/cms.html"));
-  });
-
-  // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
-  });
-
-  // authors route loads author-manager.html
-  app.get("/authors", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  });
-
 };
+
+// app.get("/api/sites", function(req, res) {
+
+//   db.Site.findAll({}).then(function(sites) {
+
+//       var hbsObject = {
+//           sites: sites,
+//           colors: ["red", "yellow", "blue"]
+//       }
+//       res.send("partials/canned-block", hbsObject);
+//   });
+// });

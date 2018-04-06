@@ -46,6 +46,12 @@ app.set('view engine', '.hbs');
 // Static directory
 app.use(express.static("public"));
 
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Routes
 // =============================================================
 require("./routes/canned-api-routes.js")(app);
@@ -58,6 +64,12 @@ require('./authentication/config/passport/passport.js')(passport, models.user);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
+<<<<<<< HEAD
+db.sequelize.sync({ force: false }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+=======
 db.sequelize.sync({force: true}).then(function() {
  
   console.log('Nice! Database looks fine')
@@ -78,4 +90,5 @@ app.listen(PORT, function(err) {
        
   else console.log(err)
 
+>>>>>>> e8bffb33d839b24c2e3220430352f5150c73584a
 });
