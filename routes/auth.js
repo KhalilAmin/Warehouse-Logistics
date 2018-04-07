@@ -6,20 +6,22 @@ module.exports = function(app, passport) {
     app.get('/', authController.signin);
  
  
-    app.get('/signup', authController.signup);
+    // app.get('/signup', authController.signup);
  
  
-    app.get('/signin', authController.signin);
+    app.get('/login', authController.signin);
  
  
     app.post('/signup', passport.authenticate('local-signup', {
             successRedirect: '/dashboard',
  
-            failureRedirect: '/signup'
+            failureRedirect: '/login'
         }
- 
+        
     ));
- 
+ app.post('/signup', function(req,res){
+     console.log(firstName);
+ });
  
     app.get('/dashboard', isLoggedIn, authController.dashboard);
  
@@ -28,10 +30,10 @@ module.exports = function(app, passport) {
     app.get('/logout', authController.logout);
  
  
-    app.post('/signin', passport.authenticate('local-signin', {
+    app.post('/login', passport.authenticate('local-signin', {
             successRedirect: '/dashboard',
  
-            failureRedirect: '/signin'
+            failureRedirect: '/login'
         }
  
     ));
@@ -43,7 +45,7 @@ module.exports = function(app, passport) {
  
             return next();
  
-        res.redirect('/signin');
+        res.redirect('/login');
  
     }
  
