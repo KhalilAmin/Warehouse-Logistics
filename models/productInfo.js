@@ -62,14 +62,6 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         });
-<<<<<<< HEAD
-        // Associating Product with warehouse specific data
-        // Product_Info.hasMany(models.Wh_Prod_Data, {
-        
-        // });
-=======
-
->>>>>>> d44a52be6367746a2838f6b6a7fee04cb0c43423
     };
 
     return Product_Info;
