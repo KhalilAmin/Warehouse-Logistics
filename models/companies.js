@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Company.associate = function (models) {
         // Associating Comapny with Users
-        Company.hasMany(models.User, {
+        Company.hasMany(models.user, {
             onDelete: "cascade"
         });
         // Associating Comapny with Sites

@@ -6,9 +6,10 @@ module.exports = function(app) {
 
     db.Site.findAll({}).then(function(sites) {
 
-      var hbsObject = {
-        sites: sites
-      };
+  // index route loads view.html
+  // app.get("/", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/blog.html"));
+  // });
 
       res.render("canned", hbsObject);
     }); 
