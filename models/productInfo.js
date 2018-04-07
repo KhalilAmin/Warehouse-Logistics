@@ -63,9 +63,9 @@ module.exports = function (sequelize, DataTypes) {
             }
         });
         // Associating Product with warehouse specific data
-        Product_Info.hasMany(models.Wh_Prod_Data, {
+        // Product_Info.hasMany(models.Wh_Prod_Data, {
         
-        });
+        // });
     };
 
     return Product_Info;
