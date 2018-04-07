@@ -9,7 +9,7 @@ exports.signup = function(req, res) {
 
 exports.signin = function(req, res) {
  
-    res.render('signin');
+    res.render('login');
  
 }
 
