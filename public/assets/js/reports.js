@@ -22,9 +22,20 @@ $(document).ready(function() {
 
   });
 
+  $("#test").on("click", function(event) {
+    console.log("THIS WAS CLICKED")
+
+    event.preventDefault();
+    $.post("/api/test/", function(result) {
+      // console.log("JSON", data);
+      renderTable(result)
+    })
+
+  })
+
   function postQuery(queryData) {
     $.post("/api/queryData/", queryData, function(result) {
-      // console.log("JSON", data);
+      console.log("JSON", data);
       renderTable(result)
     })
   }
@@ -33,7 +44,8 @@ $(document).ready(function() {
     $table = $("<table>");
     $tableheader = $("<tr>");
 
-
+    $("#rowSpace").append($table);
+    
     for (column in result.columns) {
       $tableheader.append("<th>" + result.columns[column] + "</th>");
     };
@@ -45,10 +57,9 @@ $(document).ready(function() {
       for (column in result.data[row]) {
         $newRow.append("<td>" + result.data[row][column] + "</td>")
       }
+      console.log($newRow);
       $table.append($newRow);
     };
-
-    $("#rowSpace").append($table);
   }
 
 });
