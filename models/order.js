@@ -24,12 +24,6 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         });
-        // We're saying that a order are associated with prodcuts available in that warehouse
-        Order.belongsTo(models.Wh_Prod_Data, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
     };
 
     return Order;
