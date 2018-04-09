@@ -61,9 +61,11 @@ module.exports = function(passport, user) {
  
                             password: userPassword,
  
-                            firstname: req.body.firstname,
+                            firstName: req.body.firstName,
  
-                            lastname: req.body.lastname
+                            lastName: req.body.lastName,
+
+                            company: req.body.company
  
                         };
  
@@ -94,13 +96,13 @@ module.exports = function(passport, user) {
     //serialize
 passport.serializeUser(function(user, done) {
  
-    done(null, user.id);
+    done(null, user.user_id);
  
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(user_id, done) {
  
-    User.findById(id).then(function(user) {
+    User.findById(user_id).then(function(user) {
  
         if (user) {
  
