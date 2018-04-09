@@ -46,8 +46,6 @@ app.set('view engine', '.hbs');
 // Static directory
 app.use(express.static("public"));
 
-
-
 // Routes
 // =============================================================
 require("./routes/canned-api-routes.js")(app);
@@ -60,7 +58,7 @@ require('./authentication/config/passport/passport.js')(passport, db.user);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync({force: false}).then(function() {
  
   console.log('Nice! Database looks fine')
 
