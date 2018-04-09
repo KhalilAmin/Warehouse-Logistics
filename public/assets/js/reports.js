@@ -11,10 +11,13 @@ $(document).ready(function() {
       var dateBegin = $("#dateBegin").val().trim();
       var dateEnd = $("#dateEnd").val().trim();
       var siteName = $("#siteName").val().trim();
+      var site_Name = $("#siteName").val().trim().replace(" ", "_")
+
+      console.log("SITENAME", siteName, site_Name);
 
       var queryData = {
-        dateBegin: dateBegin, 
-        dateEnd: dateEnd,
+        dateBegin: dateBegin +  " 00:00:00", 
+        dateEnd: dateEnd + "  00:00:00",
         siteName: siteName
       }
 
@@ -35,7 +38,6 @@ $(document).ready(function() {
 
   function postQuery(queryData) {
     $.post("/api/queryData/", queryData, function(result) {
-      console.log("JSON", data);
       renderTable(result)
     })
   }
