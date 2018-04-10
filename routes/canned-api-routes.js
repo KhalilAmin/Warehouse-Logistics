@@ -98,7 +98,8 @@ module.exports = function(app) {
             columns: columns,
             data: result
           };
-          console.log("JSON", "COLUMNS", data.columns, "RESULT", data.result);
+          console.log(result)
+          // console.log("JSON", "COLUMNS", data.columns, "RESULT", data.result);
           res.json(data);
         
         });
