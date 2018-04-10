@@ -1,5 +1,5 @@
-<h1>Report!</h1>
-<div id=inputSpace>
+<h1>Logistics Dashboard</h1>
+<div id="inputSpace">
     <form role="form" id="querydata">
         <div class="form-group" >
             <input type="date" class="form-control" id="dateBegin">
@@ -15,10 +15,13 @@
             </select>
         </div>
         <button id="reportGen" type="submit">Submit</button>
+        <button id="toggle" type="submit">View Top 50</button>
     </form>
 </div>
-<div id=tableSpace class="clearfix">  
-    <div id=rowSpace>
+
+
+<div id="tableSpace" class="clearfix">  
+    <div id="rowSpace">
         {{!-- <tr> --}}
             {{!-- {{#each sites}}
                 <th>{{this.column}}</th>

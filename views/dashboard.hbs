@@ -1,14 +1,54 @@
 <!DOCTYPE html>
-<html>
- 
+<html lang="en">
 <head>
-    <title>Passport with Sequelize</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/dashboardStyle.css">
+  <title>Warehouse Logistics - Dashboard</title>
 </head>
  
 <body>
-    <h2>Dashboard</h2>
-    <h5>Hurray! you are logged in.</h5>
- 
+	<h1>Report!</h1>
+	<div id="inputSpace">
+			<form role="form" id="querydata">
+					<div class="form-group" >
+							<input type="date" class="form-control" id="dateBegin">
+					</div>
+					<div class="form-group" >
+							<input type="date" class="form-control" id="dateEnd">
+					</div>
+					<div class="form-group" >
+							<select id="siteName">
+									{{#each sites}}
+									<option value={{this.site_name}}>{{this.site_name}}</option>
+									{{/each}}
+							</select>
+					</div>
+					<button id="reportGen" type="submit">Submit</button>
+			</form>
+	</div>
+
+	<button id="test" type="submit">Submit</button>
+
+	<div id="tableSpace" class="clearfix">  
+			<div id="rowSpace">
+					{{!-- <tr> --}}
+							{{!-- {{#each sites}}
+									<th>{{this.column}}</th>
+							{{/each}}
+							{{#each sites}}
+									<th>{{this.site_name}}</th>
+							{{/each}}
+					</tr> --}}
+					{{!-- {{#each sites}}
+							<div class="tablePanel">{{this.site_name}}</div> 
+					{{/each}} --}}
+			</div>
+	</div>   
 </body>
  
 </html>
