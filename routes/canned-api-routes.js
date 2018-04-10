@@ -35,7 +35,8 @@ app.post("/api/queryData", function(req, res) {
             columns: columns,
             data: result
           };
-          console.log("JSON", "COLUMNS", data.columns, "RESULT", data.result);
+          console.log(result)
+          // console.log("JSON", "COLUMNS", data.columns, "RESULT", data.result);
           res.json(data);
         });
   });
