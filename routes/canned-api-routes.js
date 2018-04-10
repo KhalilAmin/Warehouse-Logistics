@@ -2,73 +2,11 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  // app.post("/api/queryData", function(req, res) {
-  //   db.Site.findAll({
-  //     // where: {
-  //     //   site_name: req.body.siteName
-  //     // }
-  //   }).then(function(result) {
-  //     console.log("Result", result);
-  //     var columns = Object.keys(result[0].dataValues);
-  //     var data = {
-  //       columns: columns,
-  //       data: result
-  //     };
-
-  //     res.json(data);
-  //   })
-  // });
-
-  // app.post("/api/test", function(req, res) {
-  //   // Here we add an "include" property to our options in our findOne query
-  //   // We set the value to an array of the models we want to include in a left outer join
-  //   // In this case, just db.Post
-  //   db.Order.findAll({
-  //     order: [["order_qty", "DESC"]],
-  //     limit: 100
-
-  //   }).then(function(result) {
-  //     console.log(result)
-  //     var columns = Object.keys(result[0].dataValues);
-  //     var data = {
-  //       columns: columns,
-  //       data: result
-  //     };
-  //     console.log("JSON", data.columns);
-  //     res.json(data);
-    
-  //   });
-  // });
-
-
-  // app.post("/api/test", function(req, res) {
-  //   // Here we add an "include" property to our options in our findOne query
-  //   // We set the value to an array of the models we want to include in a left outer join
-  //   // In this case, just db.Post
-  //   db.Order.findAll({
-  //     order: [["order_qty", "DESC"]],
-  //     include: [db.Product_Info],
-  //     limit: 100
-
-  //   }).then(function(result) {
-  //     var columns = Object.keys(result[0].dataValues);
-  //     var data = {
-  //       columns: columns,
-  //       data: result
-  //     };
-  //     console.log("JSON", data.columns);
-  //     res.json(data);
-    
-  //   });
-  // });
-
-  app.post("/api/queryData", function(req, res) {
-    console.log("HIT ME NOW");
-    console.log("REQ BODY", req.body);
+app.post("/api/queryData", function(req, res) {
     db.sequelize.query( 
-      "SELECT description_main, po_count AS frequency, frequency AS percentage_ordered, site_name \
+      "SELECT description_main, po_count AS frequency, frequency AS percentage_ordered, warehouse_name \
       FROM \
-        (SELECT  freq.*, Warehouses.wh_id, SiteSiteId \
+        (SELECT  freq.*, Warehouses.wh_id, Warehouses.name AS warehouse_name, SiteSiteId \
         FROM ( \
           SELECT description_main, WarehouseWhID, po_count, ship_date, po_count/( \
             SELECT COUNT(*) AS po_count FROM Outbounds WHERE ship_date BETWEEN  ? AND ?) AS frequency \
@@ -77,7 +15,7 @@ module.exports = function(app) {
             FROM (SELECT * \
                   FROM Outbounds \
                   WHERE ship_date \
-                  BETWEEN  '2016-10-30 00:00:00' AND '2016-11-30 00:00:00') \
+                  BETWEEN ? AND ?) \
                   AS filteredOutbounds \
             INNER JOIN (Orders LEFT JOIN Product_Infos ON Orders.product = Product_Infos.company_prodID) \
             ON filteredOutbounds.id = Orders.OutboundId \
@@ -91,9 +29,8 @@ module.exports = function(app) {
       ON Sites.site_id = tbl.SiteSiteID \
       WHERE site_name = ? \
       ORDER BY frequency DESC"   
-    , {replacements: ['2016-10-30 00:00:00','2017-10-30 00:00:00', req.body.siteName], model: db.Slotting}) .then(function(result) { 
+    , {replacements: [req.body.dateBegin, req.body.dateEnd,req.body.dateBegin, req.body.dateEnd, req.body.siteName], model: db.Slotting}) .then(function(result) { 
           var columns = Object.keys(result[0].dataValues);
-          //console.log(result);
           var data = {
             columns: columns,
             data: result
@@ -101,9 +38,6 @@ module.exports = function(app) {
           console.log(result)
           // console.log("JSON", "COLUMNS", data.columns, "RESULT", data.result);
           res.json(data);
-        
         });
   });
-
-
 };
