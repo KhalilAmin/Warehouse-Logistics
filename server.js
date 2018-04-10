@@ -10,6 +10,8 @@ var passport = require('passport');
 var session = require('express-session');
 var env = require('dotenv').load();
 var exphbs = require('express-handlebars');
+var Chart = require('chart.js');
+
 // Sets up the Express App
 // =============================================================
 var app = express();
