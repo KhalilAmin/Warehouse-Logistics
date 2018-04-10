@@ -33,7 +33,7 @@ $(document).ready(function() {
 
   function getResult(result) {
     var chartToggle = false;
-
+    renderTable(result);
     $("#toggle").on("click", function(event) {
       console.log("RESULT!", result);
       if (chartToggle) {
