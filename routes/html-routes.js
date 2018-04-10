@@ -14,15 +14,3 @@ module.exports = function(app) {
     }); 
   });
 };
-
-// app.get("/api/sites", function(req, res) {
-
-//   db.Site.findAll({}).then(function(sites) {
-
-//       var hbsObject = {
-//           sites: sites,
-//           colors: ["red", "yellow", "blue"]
-//       }
-//       res.send("partials/canned-block", hbsObject);
-//   });
-// });
