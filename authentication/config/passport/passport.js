@@ -44,9 +44,11 @@ module.exports = function(passport, user) {
  
                 {
  
-                    return done(null, false, {
-                        message: 'That email is already taken'
-                    });
+                    return done(null, false, req.flash('emailTaken', "That Email is already taken!")
+                    //     {
+                    //     message: 'That email is already taken'
+                    // }
+                );
  
                 } else
  
@@ -152,17 +154,21 @@ passport.use('local-signin', new LocalStrategy(
  
             if (!user) {
  
-                return done(null, false, {
-                    message: 'Email does not exist'
-                });
+                return done(null, false, req.flash('loginMessage', "Email does not exist!")
+                //     {
+                //     message: 'Email does not exist'
+                // }
+            );
  
             }
  
             if (!isValidPassword(user.password, password)) {
  
-                return done(null, false, {
-                    message: 'Incorrect password.'
-                });
+                return done(null, false, req.flash('loginMessage', "Incorrect Password!")
+                //     {
+                //     message: 'Incorrect password.'
+                // }
+            );
  
             }
  

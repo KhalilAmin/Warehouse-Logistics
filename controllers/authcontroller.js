@@ -2,14 +2,18 @@ var exports = module.exports = {}
  
 exports.signup = function(req, res) {
  
-    res.render('signup');
+    console.log( req.flash('emailTaken'));
+
+    res.render('signup', { message: req.flash('emailTaken')});
  
 }
 
 
 exports.signin = function(req, res) {
  
-    res.render('login');
+    console.log( req.flash('loginMessage'));
+  
+    res.render('login', {message: req.flash('loginMessage')});
  
 }
 
