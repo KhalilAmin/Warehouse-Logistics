@@ -5,7 +5,12 @@
   margin-bottom: 10px;
 }
 
-#queryData .form-group {
+.bodyContent {
+  margin-top: 65px;
+}
+
+
+#querydata .form-group {
   padding: 10px;
 }
 
@@ -21,4 +26,9 @@
 
 #tableSpace {
   background-color: lightgray;
+  text-align: center;
+}
+
+.loginInfo {
+  float: right;
 }
