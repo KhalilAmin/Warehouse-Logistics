@@ -15,13 +15,16 @@ module.exports = function(app, passport) {
     app.post('/signup', passport.authenticate('local-signup', {
             successRedirect: '/dashboard',
  
-            failureRedirect: '/login'
-        }
+            failureRedirect: '/login',
+            
+            failureFlash: true
+            
+            }
         
     ));
- app.post('/signup', function(req,res){
-     console.log(firstName);
- });
+//  app.post('/signup', function(req,res){
+//      console.log(firstName);
+//  });
  
     app.get('/dashboard', isLoggedIn, authController.dashboard);
  
@@ -33,8 +36,11 @@ module.exports = function(app, passport) {
     app.post('/login', passport.authenticate('local-signin', {
             successRedirect: '/dashboard',
  
-            failureRedirect: '/login'
-        }
+            failureRedirect: '/login',
+
+            failureFlash: true
+
+           }
  
     ));
  
