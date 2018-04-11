@@ -3,8 +3,8 @@ var exports = module.exports = {}
 exports.signup = function(req, res) {
  
     console.log( req.flash('emailTaken'));
-
-    res.render('signup', { message: req.flash('emailTaken')});
+    var message = req.flash('error')[0];
+    res.render('signup', { message: message});
  
 }
 
@@ -12,8 +12,8 @@ exports.signup = function(req, res) {
 exports.signin = function(req, res) {
  
     console.log( req.flash('loginMessage'));
-  
-    res.render('login', {message: req.flash('loginMessage')});
+    var message = req.flash('error')[0];
+    res.render('login', {message: message});
  
 }
 
