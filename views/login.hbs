@@ -58,12 +58,14 @@
               <label for="password">Password</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             </div>
-            <label for="company">Company:</label>
-            <select class="form-control" id="company" name="company">
-              <option>Soda Company 1</option>
-              <option>Beer Company 1</option>
-              <option>Snack Company 1</option>
+            <div class="form-group">
+            {{!-- <label for="company">Company:</label> --}}
+            <select id="company" name="company">
+              {{#each companies}}
+              <option value="{{this.company_id}}">{{this.Name}}</option>
+              {{/each}}
             </select>
+            </div>
             <button type="submit" class="btn btn-success btn-lg" id="registerSubmit">Register</button>
           </form>
         </div>
