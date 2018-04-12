@@ -1,3 +1,8 @@
+body {
+  background-image: url("../images/2829985075_d262a4181f_o.jpg");
+  background-size: cover;
+}
+
 #inputSpace {
   border: solid;
   background-color: gray;
