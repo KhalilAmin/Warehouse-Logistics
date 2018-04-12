@@ -1,0 +1,34 @@
+#inputSpace {
+  border: solid;
+  background-color: gray;
+  max-width: 50%;
+  margin-bottom: 10px;
+}
+
+.bodyContent {
+  margin-top: 65px;
+}
+
+
+#querydata .form-group {
+  padding: 10px;
+}
+
+#reportGen {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+#toggle {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+#tableSpace {
+  background-color: lightgray;
+  text-align: center;
+}
+
+.loginInfo {
+  float: right;
+}
