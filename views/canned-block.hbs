@@ -1,0 +1,24 @@
+<div id="tableSpace" class="clearfix">  
+    <div id="rowSpace">
+        {{#if columns}}
+        <table>
+            <tbody>
+                <tr>
+                {{#each columns}}
+                    <th>{{this.column}}</th>
+                {{/each}}
+                </tr>
+                {{#each data}}
+                    <tr>
+                        <td class="description_main" value="{{this.description_main}}">{{this.description_main}}</td>
+                        <td class="frequency" value="{{this.frequency}}" >{{this.frequency}}</td>
+                        <td class="percentage_ordered" value="{{this.percentage_ordered}}">{{this.percentage_ordered}}</td>
+                        <td class="warehouse_name" value="{{this.warehouse_name}}">{{this.warehouse_name}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{/if}}
+    </div>
+</div>
+<canvas id="myChart"></canvas>
