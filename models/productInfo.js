@@ -21,13 +21,13 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        created_On: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        },
+        // created_On: {
+        //     type: DataTypes.DATE,
+        //     allowNull: false,
+        //     validate: {
+        //         len: [1]
+        //     }
+        // },
         weight: {
             type: DataTypes.DECIMAL(10,3),
             allowNull: true,

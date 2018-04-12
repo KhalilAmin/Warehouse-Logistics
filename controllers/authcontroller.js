@@ -1,20 +1,30 @@
+var db = require("../models");
 var exports = module.exports = {}
  
 exports.signup = function(req, res) {
+
  
-    console.log( req.flash('emailTaken'));
+ 
+    // console.log( req.flash('emailTaken'));
     var message = req.flash('error')[0];
-    res.render('signup', { message: message});
- 
+    res.render('signup', {message: message});
+    
+
 }
 
 
 exports.signin = function(req, res) {
- 
-    console.log( req.flash('loginMessage'));
+
+        // console.log( req.flash('loginMessage'));
     var message = req.flash('error')[0];
-    res.render('login', {message: message});
- 
+    db.Company.findAll({}).then(function(companies) {
+        console.log("COMPANIES", companies);
+        var hbsObject = {
+            companies: companies,
+            message: message
+        }
+    res.render('login',hbsObject);
+    })
 }
 
 exports.dashboard = function(req, res) {
