@@ -15,10 +15,12 @@ exports.signup = function(req, res) {
 
 exports.signin = function(req, res) {
 
-        // console.log( req.flash('loginMessage'));
+    // console.log( req.flash('loginMessage'));
+    
+
     var message = req.flash('error')[0];
-    db.Company.findAll({}).then(function(companies) {
-        console.log("COMPANIES", companies);
+    db.Company.findAll({
+    }).then(function(companies) {
         var hbsObject = {
             companies: companies,
             message: message
@@ -28,9 +30,17 @@ exports.signin = function(req, res) {
 }
 
 exports.dashboard = function(req, res) {
- 
-    res.render('dashboard');
- 
+
+    db.Site.findAll({
+        where: {
+            CompanyCompanyId: req.user.CompanyCompanyId
+          },
+    }).then(function(sites) {
+        var hbsObject = {
+            sites: sites,
+        }
+    res.render('dashboard', hbsObject);
+    });
 }
 
 	

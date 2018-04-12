@@ -76,8 +76,7 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/canned-api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 var authRoute = require('./routes/auth.js')(app,passport);
 
 //load Passport strategies
