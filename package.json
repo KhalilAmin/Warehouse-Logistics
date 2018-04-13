@@ -4,7 +4,6 @@
   "description": "simple warehouse logistics reporting software",
   "main": "index.js",
   "scripts": {
-    "test": "test.js",
     "start": "node server.js"
   },
   "repository": {
