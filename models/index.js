@@ -12,7 +12,8 @@ if (process.env.JAWSDB_URL) {
   var sequelize = new Sequelize(process.env.JAWSDB_URL, config);
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+};
+
 
 fs
   .readdirSync(__dirname)
@@ -31,6 +32,5 @@ Object.keys(db).forEach(modelName => {
 });
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
 module.exports = db;
