@@ -2,7 +2,11 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-app.post("/api/queryData", function(req, res) {
+  app.post("/api/queryData", function(req, res) {
+
+    //console.log("REQ!!!!!!!!!!!!!!!!!!!!!!!!", req.user.CompanyCompanyId);
+
+
     db.sequelize.query( 
       "SELECT description_main, po_count AS frequency, frequency AS percentage_ordered, warehouse_name \
       FROM \
@@ -30,12 +34,31 @@ app.post("/api/queryData", function(req, res) {
       WHERE site_name = ? \
       ORDER BY frequency DESC"   
     , {replacements: [req.body.dateBegin, req.body.dateEnd,req.body.dateBegin, req.body.dateEnd, req.body.siteName], model: db.Slotting}) .then(function(result) { 
-          var columns = Object.keys(result[0].dataValues);
-          var data = {
-            columns: columns,
-            data: result
-          };
-          res.json(data);
+          var columnObjArr = [];
+          var columnarr = Object.keys(result[0].dataValues);
+
+          for (column in columnarr) {
+            var Column = {column: columnarr[column]};
+            columnObjArr.push(Column);
+          }
+
+          db.Site.findAll({}).then((sites) => {
+            
+            var hbsObject = {
+                layout: "shared_templates",
+                sites: sites,
+                columns: columnObjArr,
+                data: result
+            }
+
+            result.forEach((item) => {
+
+            })
+
+            res.render("table", hbsObject);
+
+          });
+
         });
   });
 };

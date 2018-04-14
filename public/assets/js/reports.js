@@ -9,7 +9,6 @@ $(document).ready(function() {
       event.preventDefault();
 
       $("#rowSpace").empty();
-      console.log("DONE");
 
       var dateBegin = $("#dateBegin").val().trim();
       var dateEnd = $("#dateEnd").val().trim();
@@ -27,59 +26,67 @@ $(document).ready(function() {
 
   function postQuery(queryData) {
     $.post("/api/queryData/", queryData, function(result) {
-      getResult(result)
+      $("#queryContent").html(result);
     })
   }
 
-  function getResult(result) {
-    var chartToggle = false;
-    renderTable(result);
-    $("#toggle").on("click", function(event) {
-      console.log("RESULT!", result);
-      if (chartToggle) {
-        chartToggle = false;
-        renderChart(result)
-      } else {
-        chatToggle = true;
-        renderTable(result);
-      }
+  $("#toggle").on("click", function(event) {
+    event.preventDefault();
+
+    var flag = $("#tableSpace").css("display");
+
+    if (flag === "block") {
+      //hide table and show chart
+      renderChart();
+      document.getElementById("tableSpace").style.display = "none";
+      document.getElementById("myChart").style.display = "block";
+
+    } else {
+      //hide chart and show table
+      document.getElementById("myChart").style.display = "none";
+      document.getElementById("tableSpace").style.display = "block";
+    }
+
+  });
+
+  function renderChart() {
+    var descriptionArr = [];
+    var frequencyArr = [];
+
+    $(".description_main").each(function() {
+      
+      descriptionArr.push($(this).attr("value"))
     })
+
+    $(".frequency").each(function() {
+
+      frequencyArr.push($(this).attr("value"))
+    })
+
+    buildChart(frequencyArr.slice(0, 10), descriptionArr.slice(0, 10))
   }
 
-  function renderChart(result) {
-    for (row in result.data) {   
-      $newRow = $("<tr>");
-      for (column in result.data[row]) {
-        $newRow.append("<td>" + result.data[row][column] + "</td>")
+  function buildChart(dataValues, dataLabels) {
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: dataLabels,
+        datasets: [{
+          label: 'Products',
+          data: dataValues,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
-
-      $table.append($newRow);
-    };
-  }
-
-  function renderTable(result) {
-    
-    var chartToggle = false;
-    
-    $table = $("<table>");
-
-    $tableheader = $("<tr>");
-
-    $("#rowSpace").append($table);
-    
-    for (column in result.columns) {
-      $tableheader.append("<th>" + result.columns[column] + "</th>");
-    };
-
-    $table.append($tableheader);
-    
-    for (row in result.data) {   
-      $newRow = $("<tr>");
-      for (column in result.data[row]) {
-        $newRow.append("<td>" + result.data[row][column] + "</td>")
-      }
-
-      $table.append($newRow);
-    };
+    });
   };
 });
