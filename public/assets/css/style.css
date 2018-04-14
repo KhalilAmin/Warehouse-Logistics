@@ -45,7 +45,7 @@ body {
   padding-top: 5px;
   float: right;
 }
-#mychart {
+#ChartDiv {
   background-color: white;
   z-index: 99;
 }
