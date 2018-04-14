@@ -47,4 +47,8 @@ body {
 }
 #mychart {
   background-color: white;
+  z-index: 99;
+}
+#queryContent {
+	margin-top: 55px;
 }
