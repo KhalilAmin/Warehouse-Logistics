@@ -26,7 +26,7 @@ $(document).ready(function() {
 
   function postQuery(queryData) {
     $.post("/api/queryData/", queryData, function(result) {
-      $("body").append(result);
+      $("#queryContent").html(result);
     })
   }
 
@@ -43,8 +43,6 @@ $(document).ready(function() {
 
     } else {
       //hide chart and show table
-
-      console.log("IM IN NONE");
       document.getElementById("myChart").style.display = "none";
       document.getElementById("tableSpace").style.display = "block";
     }
@@ -69,7 +67,6 @@ $(document).ready(function() {
   }
 
   function buildChart(dataValues, dataLabels) {
-    console.log("Executing chart");
     var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
       type: 'bar',
