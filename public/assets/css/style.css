@@ -1,8 +1,20 @@
+body {
+  background: url("2829985075_d262a4181f_o copy.jpg");
+  background-size: cover;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, .80);
+  padding-bottom: 30px;
+  position: relative;
+  top: 30px;
+}
+
 #inputSpace {
   border: solid;
   background-color: gray;
   max-width: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .bodyContent {
@@ -25,10 +37,11 @@
 }
 
 #tableSpace {
-  background-color: lightgray;
+  background-color: grey;
   text-align: center;
 }
 
 .loginInfo {
+  padding-top: 5px;
   float: right;
 }
