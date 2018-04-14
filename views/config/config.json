@@ -14,10 +14,9 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "warehouse_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "use_env_variable": "JAWS_URL"
   }
+    
+  
 }
